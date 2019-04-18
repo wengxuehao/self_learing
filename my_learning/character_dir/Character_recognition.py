@@ -6,12 +6,14 @@ API_KEY = 'aCiGQ7gP7GceRREckMgy7S5K'
 SECRET_KEY = 'TpUXmvH3K7rTXkjKjvTuDT6qbkOguEUp'
 
 client = AipOcr(APP_ID, API_KEY, SECRET_KEY)
-  
 
 """ 读取图片 """
+
+
 def get_file_content(filePath):
     with open(filePath, 'rb') as fp:
         return fp.read()
+
 
 image = get_file_content('ID_card.jpg')
 
@@ -32,13 +34,13 @@ list = []
 for i in resp['words_result']:
     word = i['words']
     list.append(word)
-with open('./test.txt','w') as f:
+with open('./test.txt', 'w') as f:
     for i in list:
         f.writelines(i + "\n")
-with open('./test.txt','r') as f:
-    print('识别到的内容是：%s'%f.read())
-        # continue
-        # print(i)
+with open('./test.txt', 'r') as f:
+    print('识别到的内容是：%s' % f.read())
+    # continue
+    # print(i)
     # print(i)
 # print(resp['words_result'])
 
@@ -64,4 +66,3 @@ with open('./test.txt','r') as f:
 # """ 带参数调用通用文字识别, 图片参数为远程url图片 """
 # resp = client.webImageUrl(url, options)
 # print(resp)
-

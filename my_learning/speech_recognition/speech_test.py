@@ -1,5 +1,5 @@
 # 从pcm–>mp3–>amr格式：
-# /usr/local/ffmpeg3/bin/ffmpeg -f s16le -ar 16.0k -ac 1 -i test.pcm test03.mp3
+# /usr/local/ffmpeg3/bin/ffmpeg -f s16le -ar 16.0k -ac 1 -i test.txt.pcm test03.mp3
 # /usr/local/ffmpeg3/bin/ffmpeg -ac 1 -ar 8000 -ab 5.15k -i test03.mp3 test05.amr
 #
 # 从amr–>mp3–>pcm格式
@@ -10,7 +10,7 @@
 # 来源：CSDN
 # 原文：https://blog.csdn.net/xianglingchuan/article/details/54092584
 # 版权声明：本文为博主原创文章，转载请附上博文链接！
-
+import time
 from aip import AipSpeech
 
 """ 你的 APPID AK SK """
@@ -27,13 +27,8 @@ def get_file_content(filePath):
         return fp.read()
 
 
-try:
-    # 识别本地文件
-    # 识别本地文件
-    resp = client.asr(get_file_content('./file.pcm'), 'pcm', 16000, {
-        'dev_pid': 1536,
-    })
-    print(resp)
+resp = client.asr(get_file_content('./pcm16k.pcm'), 'pcm', 16000, {
+    'dev_pid': 1536,
+})
 
-except Exception as e:
-    print(e)
+print(resp)

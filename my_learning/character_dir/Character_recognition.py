@@ -15,7 +15,7 @@ def get_file_content(filePath):
         return fp.read()
 
 
-image = get_file_content('ID_card.jpg')
+image = get_file_content('/home/wy/Desktop/wenzi.jpg')
 
 """ 调用通用文字识别, 图片参数为本地图片 """
 client.basicGeneral(image)
@@ -34,10 +34,10 @@ list = []
 for i in resp['words_result']:
     word = i['words']
     list.append(word)
-with open('./test.txt', 'w') as f:
+with open('./test.txt.txt', 'w') as f:
     for i in list:
         f.writelines(i + "\n")
-with open('./test.txt', 'r') as f:
+with open('./test.txt.txt', 'r') as f:
     print('识别到的内容是：%s' % f.read())
     # continue
     # print(i)

@@ -41,10 +41,10 @@ def img(message):
         for i in resp['words_result']:
             word = i['words']
             list.append(word)
-        with open('./test.txt', 'w') as f:
+        with open('./test.txt.txt', 'w') as f:
             for i in list:
                 f.writelines(i + "\n")
-        with open('./test.txt', 'r') as f:
+        with open('./test.txt.txt', 'r') as f:
             response = f.read()
         return '图像上传成功识别文字结果如下：%s' % response
     except Exception as e:

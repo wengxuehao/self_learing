@@ -13,7 +13,7 @@ def get_file_content(filePath):
     with open(filePath, 'rb') as fp:
         return fp.read()
 
-image = get_file_content('/home/wy/Desktop/hashiqi.jpeg')
+image = get_file_content('hashiqi.jpeg')
 #
 # """ 调用通用物体识别 """
 # resp = client.animalDetect(image)
@@ -25,5 +25,7 @@ options["top_num"] = 3
 options["baike_num"] = 5
 """ 带参数调用通用动物识别 """
 resp = client.animalDetect(image, options)
+print(resp)
 print(resp['result'][0]['name'])
+print(resp['result'][0]['baike_info']['description'])
 

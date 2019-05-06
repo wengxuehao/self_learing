@@ -11,18 +11,19 @@ resp = requests.post(get_token_url)
 access_token = resp.json()['access_token']
 request_url = url + "?access_token=" + access_token
 headers = {
-    'Content-Type':'application/x-www-form-urlencode'
+    'Content-Type': 'application/x-www-form-urlencode'
 
 }
-f= open('./菜品1.jpeg','rb')
+f = open('/home/wy/Desktop/shucai.jpg', 'rb')
 
 content = f.read()
 img = base64.b64encode(content)
+f.close()
 # print(img)
 params = {
-    'image':img,
-    'top_num':5,
-    'baike_num':0
+    'image': img,
+    'top_num': 5,
+    'baike_num': 0
 }
-response = requests.post(request_url,headers=headers,data=params)
+response = requests.post(request_url, headers=headers, data=params)
 pprint(response.json())
